@@ -92,7 +92,7 @@ $app->group('',function() use ($app){
         "secure" => false,
         "secret" => getenv('JWT_SECRET_KEY'),
         "attribute" => "jwt",
-        "relaxed" => ["localhost", "my-green.herokuapp.com"],
+        "relaxed" => ["localhost", "my-green-backend.herokuapp.com"],
         "error" => function ($response, $arguments) {
             $data["status"] = "error";
             $data["message"] = $arguments["message"];
