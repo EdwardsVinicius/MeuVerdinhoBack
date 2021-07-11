@@ -44,10 +44,11 @@ $app->get('/wallet-user', WalletController::class . ':listWalletUser');
 
 $app->post('/transaction', TransactionController::class . ':registerTransaction');
 $app->get('/transaction-type', TransactionController::class . ':getUserTransactionsByType');
-$app->get('/transaction-total', TransactionController::class . ':getUserTotalTransactionsByType');
+$app->get('/transaction-total/[{idWallet}]', TransactionController::class . ':getUserTotalTransactionsByType');
 
 $app->post('/goal', GoalController::class . ':registerGoal');
 $app->get('/goal', GoalController::class . ':listGoals');
+$app->get('/goal-wallet', GoalController::class . ':listGoalsByWallet');
 
 
 //Need authentication

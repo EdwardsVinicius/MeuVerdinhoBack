@@ -29,23 +29,20 @@ final class GoalDAO extends Connection
         return $result;
     }
 
-    // public function listGoalsByUser(int $idUser, string $type): array
-    // {
-    //     $statement = $this->pdo
-    //         ->prepare(" SELECT 
-    //                         *
-    //                     FROM adm.carteira
-    //                     WHERE usuario_id = :usuario_id
-    //                         AND tipo_carteira = :tipo_carteira
-    //                     ORDER BY carteira_id
-    //                     ");
-    //     $statement->bindValue('usuario_id', $idUser);
-    //     $statement->bindValue('tipo_carteira', $type);
-    //     $statement->execute();
-    //     $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+    public function listGoalsByWallet(int $idWallet): array
+    {
+        $statement = $this->pdo
+            ->prepare(" SELECT 
+                            *
+                        FROM adm.meta
+                        WHERE carteira_id = :carteira_id
+                        ");
+        $statement->bindValue('carteira_id', $idWallet);
+        $statement->execute();
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
-    //     return $result;
-    // }
+        return $result;
+    }
 
     public function registerGoal(GoalModel $goalModel)
     {

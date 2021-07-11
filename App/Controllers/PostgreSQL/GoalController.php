@@ -32,6 +32,29 @@ class GoalController extends Connection
         return $response;
     }
 
+    public function listGoalsByWallet(Request $request, Response $response, array $args): Response
+    {
+        $data = $request->getParsedBody();
+        $idWallet = $data['carteira_id'];
+
+        $goalDAO = new GoalDAO();
+
+        $data = $goalDAO->listGoalsByWallet($idWallet);
+
+        $result = [
+            'message' => [
+                'pt' => null,
+                'en' => null
+            ],
+            'result' => $data
+        ];
+
+        $response = $response
+            ->withjson($result);
+
+        return $response;
+    }
+
     // public function getGoalById(Request $request, Response $response, array $args): Response
     // {
     //     $query = $request->getQueryParams();
