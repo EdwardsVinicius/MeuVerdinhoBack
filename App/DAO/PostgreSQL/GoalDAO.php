@@ -50,17 +50,20 @@ final class GoalDAO extends Connection
             ->prepare(" INSERT INTO adm.meta(
                             valor,
                             prazo,
-                            carteira_id
+                            carteira_id,
+                            descricao
                             )
                         VALUES (
                             :valor,
                             :prazo,
-                            :carteira_id);
+                            :carteira_id,
+                            :descricao);
                         ");
         $statement->execute([
             'valor' => $goalModel->getValue(),
             'prazo' => $goalModel->getDeadline(),
-            'carteira_id' => $goalModel->getIdWallet()
+            'carteira_id' => $goalModel->getIdWallet(),
+            'descricao' => $goalModel->getDescription()
         ]);
         $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
         

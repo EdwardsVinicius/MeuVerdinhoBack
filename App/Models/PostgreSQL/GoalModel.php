@@ -8,6 +8,7 @@ class GoalModel
 	private $value;
 	private $deadline;
     private $idWallet;
+    private $description;
 
     /**
      * Get the value of idGoal
@@ -85,6 +86,26 @@ class GoalModel
     public function setIdWallet($idWallet): GoalModel
     {
         $this->idWallet = $idWallet;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of description
+     */ 
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set the value of description
+     *
+     * @return  self
+     */ 
+    public function setDescription($description): GoalModel
+    {
+        $this->description = $description;
 
         return $this;
     }

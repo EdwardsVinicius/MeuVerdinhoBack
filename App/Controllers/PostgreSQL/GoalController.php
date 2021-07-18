@@ -99,7 +99,8 @@ class GoalController extends Connection
         $goalModel
             ->setIdWallet($data['carteira_id'])
             ->setValue($data['valor'])
-            ->setDeadline($data['prazo']);
+            ->setDeadline($data['prazo'])
+            ->setDescription($data['descricao']);
 
         try{
             $idGoal = $goalDAO->registerGoal($goalModel);
