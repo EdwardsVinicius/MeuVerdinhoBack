@@ -49,14 +49,14 @@ final class AuthenticateController
         $tokenCarrega = [
             'sub' => $user->getIdUser(),
             'idPessoa' => $user->getIdPerson(),
-            'login' => $user->getLogin(),
+            'login' => $user->getEmail(),
             'dateExpire' => $dateExpire
         ];
 
         $token = JWT::encode($tokenCarrega,getenv('JWT_SECRET_KEY'));
 
         $refreshToken = [
-            'login' => $user->getLogin()
+            'login' => $user->getEmail()
         ];
 
         $refreshToken = JWT::encode($refreshToken, getenv('JWT_SECRET_KEY'));
@@ -71,16 +71,16 @@ final class AuthenticateController
         $tokenDAO = new TokenDAO();
         $tokenDAO->createToken($tokenModel);
 
-        $userCompany = $userDAO->listUserCompany($login);
+        // $userCompany = $userDAO->listUserCompany($login);
 
-        foreach($userCompany as $dataUserCompany){
-            $resultUserCompany[] = $dataUserCompany;
-        }
+        // foreach($userCompany as $dataUserCompany){
+        //     $resultUserCompany[] = $dataUserCompany;
+        // }
 
         $tokenResult = [
             "token" => $token,
             "refreshToken" => $refreshToken,
-            "companyAccess" => $resultUserCompany
+            // "companyAccess" => $resultUserCompany
         ];
         
         $result = [

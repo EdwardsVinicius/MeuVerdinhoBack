@@ -2,6 +2,7 @@
 
 use function src\slimConfiguration;
 
+use App\Controllers\PostgreSQL\AuthenticateController;
 use App\Controllers\PostgreSQL\AttendanceController;
 use App\Controllers\PostgreSQL\UserController;
 use App\Controllers\PostgreSQL\TransactionController;

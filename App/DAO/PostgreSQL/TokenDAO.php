@@ -18,9 +18,9 @@ final class TokenDAO extends Connection
             ->prepare('INSERT INTO adm.token
                 (
                     token,
-                    idusuario,
+                    usuario_id,
                     refreshtoken,
-                    dataexpira
+                    data_expira
                 )
                 VALUES
                 (
